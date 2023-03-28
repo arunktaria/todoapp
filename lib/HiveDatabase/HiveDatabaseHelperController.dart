@@ -60,4 +60,9 @@ class HiveDatabaseHelperController extends GetxController{
     return txt;
   }
 
+  deleteUserName(){
+    userCollectionBox?.clear();
+  }
+
+
 }

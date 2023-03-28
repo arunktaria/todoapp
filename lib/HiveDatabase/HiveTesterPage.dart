@@ -40,13 +40,16 @@ class _HiveTesterPageState extends State<HiveTesterPage> {
       )
               ,)
             ,
-            Expanded(child: Container(color: Colors.amber,
+            Expanded(child: InkWell(onTap: (){
+              hiveController?.deleteUserName();
+            },child:  Container(color: Colors.amber,
                 margin: EdgeInsets.all(7),
                 height: double.infinity,
                 width: double.infinity,
                 child: Text("Delete", style: TextStyle(color: Colors.black),),
-                alignment: Alignment.center)),
-
+                alignment: Alignment.center)
+              ,)
+            ),
             Expanded(child: Container(
               decoration: getBoxDecorationRoundedOnlyTopRight(20, Colors.amber),
               margin: EdgeInsets.all(7),
