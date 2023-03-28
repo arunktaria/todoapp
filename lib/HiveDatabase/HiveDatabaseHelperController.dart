@@ -7,6 +7,8 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 
+import 'UserDataModel/UserDataModelHive.dart';
+
 class HiveDatabaseHelperController extends GetxController{
 
   static HiveDatabaseHelperController? instance=HiveDatabaseHelperController.initialize();
@@ -58,6 +60,17 @@ class HiveDatabaseHelperController extends GetxController{
     var txt=await userCollectionBox?.get("username");
     print("email is from database $txt");
     return txt;
+  }
+
+  insertUserData(UserDataModelHive ob)async
+  {
+    var hive=await Hive.openBox("user");
+    hive.add(ob);
+  }
+
+  getUserData()async
+  {
+    return await userCollectionBox?.get("user");
   }
 
   deleteUserName(){

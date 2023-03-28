@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todoapp/AppExt.dart';
 import 'package:todoapp/HiveDatabase/HiveDatabaseHelperController.dart';
+import 'package:todoapp/HiveDatabase/UserDataModel/UserDataModelHive.dart';
 
 class HiveTesterPage extends StatefulWidget {
   const HiveTesterPage({Key? key}) : super(key: key);
@@ -28,7 +29,7 @@ class _HiveTesterPageState extends State<HiveTesterPage> {
           child: Row(children: [
             Container(child:
             Expanded(child: InkWell(onTap: (){
-              getUsername();
+              getUserData();
             },child: Container(
               decoration: getBoxDecorationRoundedOnlyTopLeft(20, Colors.amber),
               margin: EdgeInsets.all(7),
@@ -87,7 +88,8 @@ class _HiveTesterPageState extends State<HiveTesterPage> {
                 decoration: getBoxDecorationRounded(50, Colors.brown),),),
               onTap: () {
                 print("email $mEmail username $mUsername password $mPassword");
-                saveDataToHive();
+                //saveDataToHive();
+                saveUserData();
               },)
             ,
           ], mainAxisAlignment: MainAxisAlignment.center,
@@ -107,6 +109,21 @@ class _HiveTesterPageState extends State<HiveTesterPage> {
 
     hiveController?.insertUsername(mUsername!);
   }
+
+  saveUserData()
+  {
+    var ob=UserDataModelHive()
+    ..userName=mUsername
+    ..password=mPassword;
+    hiveController?.insertUserData(ob);
+  }
+
+  getUserData()async
+  {
+    var ob=await hiveController?.getUserData();
+    print("userData $ob");
+  }
+
 
   getUsername() async
   {
