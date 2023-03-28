@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:todoapp/GetxLogin.dart';
+import 'package:todoapp/HiveDatabase/HiveTesterPage.dart';
 import 'package:todoapp/HomePage.dart';
 import 'package:todoapp/cubit/todo_cubit.dart';
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       ),
       home: BlocProvider(
         create: (context) => TodoCubit(),
-        child: const GetxLogin(),
+        child: const HiveTesterPage(),
       ),
       debugShowCheckedModeBanner: false,
     );

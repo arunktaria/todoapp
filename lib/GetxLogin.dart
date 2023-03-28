@@ -98,6 +98,7 @@ class _GetxLoginState extends State<GetxLogin> {
 
   Widget getDrawer()
   {
+
     return Drawer(child: Column(children: [
       ClipRRect(borderRadius: BorderRadius.circular(10),child: Image.network("https://cdni.autocarindia.com/utils/imageresizer.ashx?n=https://cms.haymarketindia.net/model/uploads/modelimages/Hyundai-Aura-230120231337.jpg&w=350&h=251&q=90&c=1"),),
       Text("Car Bazar",style: TextStyle(fontSize: 20),),

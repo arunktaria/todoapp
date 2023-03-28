@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'dart:ffi';
 
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
@@ -50,3 +49,14 @@ InputDecoration getEditFieldDecoration(String hint){
          fontSize: 16.0
      );
    }
+
+getPlaceholder()=>Placeholder(color: Colors.blue,strokeWidth: 5.0,);
+
+   getBoxDecorationRounded(double radius,MaterialColor mcolor)=>BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(radius)),color: mcolor);
+getBoxDecorationRoundedOnlytop(double radius,MaterialColor mcolor)=>BoxDecoration(borderRadius: BorderRadius.only(topLeft:Radius.circular(radius),topRight: Radius.circular(radius)),color: mcolor,);
+getBoxDecorationRoundedOnlybottom(double radius,MaterialColor mcolor)=>BoxDecoration(borderRadius: BorderRadius.only(bottomRight:Radius.circular(radius),bottomLeft: Radius.circular(radius)),color: mcolor,);
+getBoxDecorationRoundedOnlyLeft(double radius,MaterialColor mcolor)=>BoxDecoration(borderRadius: BorderRadius.only(topLeft:Radius.circular(radius),bottomLeft: Radius.circular(radius)),color: mcolor,);
+getBoxDecorationRoundedOnlyRight(double radius,MaterialColor mcolor)=>BoxDecoration(borderRadius: BorderRadius.only(topRight:Radius.circular(radius),bottomRight: Radius.circular(radius)),color: mcolor,);
+
+getBoxDecorationRoundedOnlyTopLeft(double radius,MaterialColor mcolor)=>BoxDecoration(borderRadius: BorderRadius.only(topLeft:Radius.circular(radius)),color: mcolor,);
+getBoxDecorationRoundedOnlyTopRight(double radius,MaterialColor mcolor)=>BoxDecoration(borderRadius: BorderRadius.only(topRight:Radius.circular(radius)),color: mcolor,);
