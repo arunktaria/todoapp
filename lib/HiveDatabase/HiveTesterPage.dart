@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:todoapp/AppExt.dart';
 import 'package:todoapp/HiveDatabase/HiveDatabaseHelperController.dart';
 import 'package:todoapp/HiveDatabase/UserDataModel/UserDataModelHive.dart';
@@ -113,8 +114,8 @@ class _HiveTesterPageState extends State<HiveTesterPage> {
   saveUserData()
   {
     var ob=UserDataModelHive()
-    ..userName=mUsername
-    ..password=mPassword;
+    ..userName=mUsername!
+    ..password=mPassword!;
     hiveController?.insertUserData(ob);
   }
 
@@ -122,6 +123,7 @@ class _HiveTesterPageState extends State<HiveTesterPage> {
   {
     var ob=await hiveController?.getUserData();
     print("userData $ob");
+    showToast("hive object $ob");
   }
 
 

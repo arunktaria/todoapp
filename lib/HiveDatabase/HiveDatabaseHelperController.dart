@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 
+import 'HiveUserDataAdapter/UserdataAdapter.dart';
 import 'UserDataModel/UserDataModelHive.dart';
 
 class HiveDatabaseHelperController extends GetxController{
@@ -36,7 +37,6 @@ class HiveDatabaseHelperController extends GetxController{
       dirPath=directory.path;
       print("setupDatabase dir $dirPath");
       initializeDatabaseDir(dirPath);
-
     });
 
 
@@ -46,6 +46,7 @@ class HiveDatabaseHelperController extends GetxController{
   initializeDatabaseDir(String dirPath)async
   {
     boxCollection=await BoxCollection.open("db_todo", {'user'},path: dirPath);
+    Hive.registerAdapter(UserdataAdapter());
     userCollectionBox=await boxCollection?.openBox("user");
   }
 
@@ -57,7 +58,7 @@ class HiveDatabaseHelperController extends GetxController{
   }
 
   getUsername()async{
-    var txt=await userCollectionBox?.get("username");
+    var txt=await userCollectionBox?.get("user");
     print("email is from database $txt");
     return txt;
   }
@@ -70,12 +71,11 @@ class HiveDatabaseHelperController extends GetxController{
 
   getUserData()async
   {
-    return await userCollectionBox?.get("user");
+    return await userCollectionBox?.get("username");
   }
 
   deleteUserName(){
     userCollectionBox?.clear();
   }
-
 
 }
