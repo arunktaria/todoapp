@@ -26,17 +26,18 @@ class _HiveTesterPageState extends State<HiveTesterPage> {
       bottomNavigationBar: BottomAppBar(child: Container(width: double.infinity,
         height: 50,
         child: Container(
-          decoration: getBoxDecorationRoundedOnlytop(20, Colors.brown),
+
           child: Row(children: [
             Container(child:
             Expanded(child: InkWell(onTap: (){
+              print("inkwell pressed");
               getUserData();
             },child: Container(
-              decoration: getBoxDecorationRoundedOnlyTopLeft(20, Colors.amber),
+              decoration: getBoxDecorationRounded(10, Colors.blue),
               margin: EdgeInsets.all(7),
               height: double.infinity,
               width: double.infinity,
-              child: Text("Save", style: TextStyle(color: Colors.black),),
+              child: Text("Save", style: TextStyle(color: Colors.white),),
               alignment: Alignment.center,)
             )
       )
@@ -44,16 +45,17 @@ class _HiveTesterPageState extends State<HiveTesterPage> {
             ,
             Expanded(child: InkWell(onTap: (){
               hiveController?.deleteUserName();
-            },child:  Container(color: Colors.amber,
+            },child:  Container(
+                decoration: getBoxDecorationRounded(10, Colors.red),
                 margin: EdgeInsets.all(7),
                 height: double.infinity,
                 width: double.infinity,
-                child: Text("Delete", style: TextStyle(color: Colors.black),),
+                child: Text("Delete", style: TextStyle(color: Colors.white),),
                 alignment: Alignment.center)
               ,)
             ),
             Expanded(child: Container(
-              decoration: getBoxDecorationRoundedOnlyTopRight(20, Colors.amber),
+              decoration: getBoxDecorationRounded(10, Colors.amber),
               margin: EdgeInsets.all(7),
               height: double.infinity,
               width: double.infinity,
@@ -83,15 +85,26 @@ class _HiveTesterPageState extends State<HiveTesterPage> {
               onChanged: (password) {
                 mPassword = password;
               },), SizedBox(height: 20,),
+
+            Container(decoration: getBoxDecorationRounded(10, Colors.teal),child:
+            Material(
+              color: Colors.transparent,
+              child:
             InkWell(child: SizedBox(height: 50,
               width: double.infinity,
               child: Container(
-                decoration: getBoxDecorationRounded(50, Colors.brown),),),
+                alignment: Alignment.center,
+                child: Text("Submit",style: TextStyle(color: Colors.white),),
+                ),),
               onTap: () {
                 print("email $mEmail username $mUsername password $mPassword");
                 //saveDataToHive();
                 saveUserData();
               },)
+              ,),
+
+            )
+
             ,
           ], mainAxisAlignment: MainAxisAlignment.center,
           ),
@@ -117,10 +130,16 @@ class _HiveTesterPageState extends State<HiveTesterPage> {
     ..userName=mUsername!
     ..password=mPassword!;
     hiveController?.insertUserData(ob);
+    print("save   ${ob.userName}");
   }
 
   getUserData()async
   {
+    if(hiveController!=null){
+      print("hivve con not null");
+    }else{
+      print("hivve null hivve");
+    }
     var ob=await hiveController?.getUserData();
     print("userData $ob");
     showToast("hive object $ob");

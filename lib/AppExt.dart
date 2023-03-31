@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -5,7 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 InputDecoration getEditFieldDecoration(String hint){
-  return InputDecoration(hintText: hint,border: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))));
+  return InputDecoration(hintText: hint,border: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))));
 }
 
 

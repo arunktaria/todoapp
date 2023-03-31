@@ -6,7 +6,6 @@ import '../UserDataModel/UserDataModelHive.dart';
 class UserdataAdapter extends TypeAdapter<UserDataModelHive>{
   @override
   UserDataModelHive read(BinaryReader reader) {
-
     throw UnimplementedError();
   }
 
@@ -15,7 +14,7 @@ class UserdataAdapter extends TypeAdapter<UserDataModelHive>{
 
   @override
   void write(BinaryWriter writer, UserDataModelHive obj) {
-
+    print("write object is ${obj.userName} ob");
   }
 
 

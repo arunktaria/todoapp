@@ -46,7 +46,7 @@ class HiveDatabaseHelperController extends GetxController{
   initializeDatabaseDir(String dirPath)async
   {
     boxCollection=await BoxCollection.open("db_todo", {'user'},path: dirPath);
-    Hive.registerAdapter(UserdataAdapter());
+    Hive.registerAdapter(UserDataModelHiveAdapter());
     userCollectionBox=await boxCollection?.openBox("user");
   }
 
@@ -67,11 +67,13 @@ class HiveDatabaseHelperController extends GetxController{
   {
     var hive=await Hive.openBox("user");
     hive.add(ob);
+    print("object inserted  obb ${ob.userName} ob");
   }
 
   getUserData()async
   {
-    return await userCollectionBox?.get("username");
+    print("getUserdata");
+    return await userCollectionBox?.get("user");
   }
 
   deleteUserName(){
